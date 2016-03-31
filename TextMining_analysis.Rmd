@@ -1,0 +1,151 @@
+---
+title: "MA710 - New York Times Articles"
+author: "Yi Qi, Shu Zhang, Yirui Fan"
+date: "3 Apr 2016"
+output:
+  html_document:
+    toc: yes
+---
+
+\pagebreak
+
+
+# Introduction
+
+[Provide background for and an introduction to the dataset.
+  Describe your intended analysis and goals.]
+  
+# Base investigation
+
+[Start with a basic set of options, and explain why you chose them in the following table.]
+
+[Do not change the first two lines of the table. They define the columns and the headers.]
+
+Parameter | Value | Reason
+--------- | ----- | ------
+Query term | "dance" | Interested in modern dance.
+Begin date | 1 Jan 2015 | Interested in 2015 articles.
+End date   | 31 Dec 2015 | Interested in 2015 articles.
+Field      | `snippet` | 
+Stemming   | Yes/No | 
+N-grams    | 1, 2 |
+Stopwords  | "english"/"SMART" |
+Stopwords  | "dance" | This is the search term.
+Weighting  | binary | 
+Threshold  | 2 |
+Algorithm  | k-means | 
+`k`        | 10 |
+
+[Evaluate the clusters you create.]
+
+### Evaluation: cluster counts 
+
+The table below indicates the number of articles 
+that are contained in each cluster. 
+```{r echo=FALSE}
+as.data.frame(table(cluster))
+#  17  45   2   9   2  60 839  27   5   4 
+```
+[Interpret the information from the table. 
+ Indicate which clusters are large enough to investigate further.
+ Explain your reasoning.]
+
+### Evaluation: common words 
+
+[Use the `TopWords` function to check for common words in 
+ each cluster which in the previous section you chose to 
+ investigate further. 
+ For each cluster indicate which words (if any) occur often enough
+ to indicate a potential subject of the documents in the cluster.
+ Indicate which clusters seem to have a potential subject and 
+ should be investigated further.]
+
+
+```{r echo=FALSE, warning=FALSE}
+# The `TopWords` function displays the documents 
+# in the cluster whose number is specified with 
+# third parameter
+TopWords(dtm, cluster, 1) 
+```
+
+[Explain whether the documents of this cluster have a common 
+ subject and describe this subject. ]
+
+```{r echo=FALSE, warning=FALSE}
+# The `TopWords` function displays the documents 
+# in the cluster whose number is specified with 
+# third parameter
+TopWords(dtm, cluster, 4) 
+```
+
+[Explain whether the documents of this cluster have a common 
+ subject and describe this subject. ]
+
+```{r echo=FALSE, warning=FALSE}
+# The `TopWords` function displays the documents 
+# in the cluster whose number is specified with 
+# third parameter
+TopWords(dtm, cluster, 10) 
+```
+
+[Explain whether the documents of this cluster have a common 
+ subject and describe this subject. ]
+
+### Evaluation: check documents  
+
+[Use the `view.cluster` function to read the documents in each cluster 
+ which you decided in the previous section should be investigated further.
+ Look for a single subject common to all or most documents in the cluster.
+ For each cluster indicate whether all or most of the documents in the 
+ cluster share a common subject.]
+ 
+```{r echo=FALSE}
+view.cluster(1)
+```
+
+```{r echo=FALSE}
+view.cluster(4)
+```
+
+```{r echo=FALSE}
+view.cluster(10)
+```
+
+
+[From your evaluation, decide which parameter you will change for the next investigation.]
+
+# Investigation 2
+
+[Describe the option you will change from your previous investigation and why you choose it.
+ Modify the following table to indicate the parameter choices you made for this investigation.
+ Include the reasons you made these choices. If you did not change a parameter then simply
+ copy the line from the previous table.]
+
+Parameter | Value | Reason
+--------- | ----- | ------
+Query term | "dance" | Interested in modern dance.
+Begin date | 1 Jan 2015 | Interested in 2015 articles.
+End date   | 31 Dec 2015 | Interested in 2015 articles.
+Field      | `snippet` | 
+Stemming   | Yes/No | 
+N-grams    | 1, 2 |
+Stopwords  | "english"/"SMART" |
+Stopwords  | "dance" | This is the search term.
+Weighting  | binary | 
+Threshold  | 2 |
+`k`        | 10 |
+
+[Evaluate the clusters you create.]
+
+[From your evaluation, decide which parameter you will change for the next investigation.]
+
+# Investigation ?
+
+[Repeat this process until you are satisfied that you have found good clusters.]
+  
+# Conclusion
+
+[Describe the final modifications used to create your clusters 
+ and describe the clusters of the cluster group.]
+
+[Explain why this is the best set of options/parameters and clusters.]
